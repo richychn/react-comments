@@ -1,12 +1,50 @@
+// Import the React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import faker from 'faker';
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Create a React component
+const App = () => {
+	return (
+		<div className="ui container comments">
+			<ApprovalCard>
+				<div>
+					<h4>Warning!</h4>
+					Are you sure?
+				</div>
+			</ApprovalCard>
+			<ApprovalCard>
+				<CommentDetail 
+					author={faker.name.findName()} 
+					avatar={faker.image.avatar()} 
+					time="Today at 6:00PM" 
+					text={faker.lorem.sentence()} 
+				/>
+			</ApprovalCard>
+			<ApprovalCard>
+				<CommentDetail 
+					author={faker.name.findName()} 
+					avatar={faker.image.avatar()} 
+					time="Yesterday at 4:30PM" 
+					text={faker.lorem.sentence()} 
+				/>
+			</ApprovalCard>
+			<ApprovalCard>
+				<CommentDetail 
+					author={faker.name.findName()} 
+					avatar={faker.image.avatar()} 
+					time="Two days ago at 6:39AM" 
+					text={faker.lorem.sentence()} 
+				/>
+			</ApprovalCard>
+		</div>
+	);
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Take the React component and show on the screen
+ReactDOM.render(
+	<App />,
+	document.querySelector('#root')
+);
